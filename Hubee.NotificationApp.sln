@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hubee.NotificationApp.Tests", "test\Hubee.Notification.Tests\Hubee.NotificationApp.Tests.csproj", "{E708B048-BDC0-4B20-9A24-DCB55A00CE19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{CF7CE809-9308-4A0B-8F19-7D37F1DE4CFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A539BD7C-2014-402B-A106-FFF8B966D72D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B33F376E-5AB3-4820-9DF9-E01FED7E3D5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hubee.NotificationApp.Api", "src\Hubee.Notification.App\Hubee.NotificationApp.Api.csproj", "{DD428FA5-9865-40B2-8F95-F9A821524F82}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hubee.NotificationApp.Core", "src\Hubee.Notification.Core\Hubee.NotificationApp.Core.csproj", "{F22FF894-2838-439F-96DF-B5FB8F5DD0D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hubee.NotificationApp.Infra", "src\Hubee.Notification.Infra\Hubee.NotificationApp.Infra.csproj", "{FE889BDE-189C-425F-A2DC-90BC582DA26C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{E322A185-6BC3-4479-8F33-BE12CB3ED54A}"
+	ProjectSection(SolutionItems) = preProject
+		src\Hubee.Notification.Configuration\appsettings.Development.json = src\Hubee.Notification.Configuration\appsettings.Development.json
+		src\Hubee.Notification.Configuration\appsettings.json = src\Hubee.Notification.Configuration\appsettings.json
+		src\Hubee.Notification.Configuration\appsettings.Production.json = src\Hubee.Notification.Configuration\appsettings.Production.json
+	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E49AF3EC-CA59-4D66-B9D4-B836E507F89F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E708B048-BDC0-4B20-9A24-DCB55A00CE19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E708B048-BDC0-4B20-9A24-DCB55A00CE19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E708B048-BDC0-4B20-9A24-DCB55A00CE19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E708B048-BDC0-4B20-9A24-DCB55A00CE19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD428FA5-9865-40B2-8F95-F9A821524F82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD428FA5-9865-40B2-8F95-F9A821524F82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD428FA5-9865-40B2-8F95-F9A821524F82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD428FA5-9865-40B2-8F95-F9A821524F82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F22FF894-2838-439F-96DF-B5FB8F5DD0D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F22FF894-2838-439F-96DF-B5FB8F5DD0D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F22FF894-2838-439F-96DF-B5FB8F5DD0D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F22FF894-2838-439F-96DF-B5FB8F5DD0D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE889BDE-189C-425F-A2DC-90BC582DA26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE889BDE-189C-425F-A2DC-90BC582DA26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE889BDE-189C-425F-A2DC-90BC582DA26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE889BDE-189C-425F-A2DC-90BC582DA26C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E49AF3EC-CA59-4D66-B9D4-B836E507F89F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E49AF3EC-CA59-4D66-B9D4-B836E507F89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E49AF3EC-CA59-4D66-B9D4-B836E507F89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E49AF3EC-CA59-4D66-B9D4-B836E507F89F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E708B048-BDC0-4B20-9A24-DCB55A00CE19} = {B33F376E-5AB3-4820-9DF9-E01FED7E3D5E}
+		{DD428FA5-9865-40B2-8F95-F9A821524F82} = {CF7CE809-9308-4A0B-8F19-7D37F1DE4CFF}
+		{F22FF894-2838-439F-96DF-B5FB8F5DD0D2} = {A539BD7C-2014-402B-A106-FFF8B966D72D}
+		{FE889BDE-189C-425F-A2DC-90BC582DA26C} = {CF7CE809-9308-4A0B-8F19-7D37F1DE4CFF}
+		{E322A185-6BC3-4479-8F33-BE12CB3ED54A} = {CF7CE809-9308-4A0B-8F19-7D37F1DE4CFF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8BB1230-B47D-4A0E-AA62-0E85291F2FD7}
+	EndGlobalSection
+EndGlobal

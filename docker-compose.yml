@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  hubee.notificationapp.api:
+    container_name: hubee.notificationapp.api
+    image: ${DOCKER_REGISTRY-}hubeenotificationappapi
+    environment:
+        - HUBEE_CONNECTION_STRING=User ID=hubee;Password=bBH}/5K'_{9RmMW.;Host=postgres;Port=5432;Database=hubee;Pooling=true;
+    build:
+      context: .
+      dockerfile: src/Hubee.Notification.App/Dockerfile
+networks:
+  default:
+    external:
+      name: shared_infra
