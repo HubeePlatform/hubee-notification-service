@@ -69,7 +69,7 @@ Para criar uma notificação, deve-se, seguir o contrato abaixo:
 |:----|:----------|
 | notificationType | informar o tipo da notificação |
 | templateType | informar o tipo do template |
-| templateVersion | informar a versão do tamplate |
+| templateVersion | informar a versão do template |
 | receiver | informar um ou mais destinatários da mensagem |
 | templateMapper | caso o tamplete seja personalizado é necessário o mapeamento, e o mesmo é basedado em **chave-valor**. Sendo que a chave deve corresponder com a mesma utilizada no template |
 | templateMapper.title | informar o mapeamento para o título da mensagem |
