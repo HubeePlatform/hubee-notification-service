@@ -1,6 +1,7 @@
-﻿using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
+using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
 using Hubee.NotificationApp.Infra.ModuleNotification.Adapters.Database.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using System;
 
 namespace Hubee.NotificationApp.Infra.ModuleNotification.Adapters.Database.Context
@@ -9,8 +10,8 @@ namespace Hubee.NotificationApp.Infra.ModuleNotification.Adapters.Database.Conte
     {
         public DbSet<Template> Templates { get; set; }
 
-        public NotificationContext(DbContextOptions<NotificationContext> options): base(options)
-        { 
+        public NotificationContext(DbContextOptions<NotificationContext> options) : base(options)
+        {
 
         }
 
@@ -37,6 +38,16 @@ namespace Hubee.NotificationApp.Infra.ModuleNotification.Adapters.Database.Conte
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new TemplateConfiguration());
+        }
+    }
+
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<NotificationContext>
+    {
+        public NotificationContext CreateDbContext(string[] args)
+        {
+            var builder = new DbContextOptionsBuilder<NotificationContext>();
+            builder.UseNpgsql(Environment.GetEnvironmentVariable("HUBEE_CONNECTION_STRING"));
+            return new NotificationContext(builder.Options);
         }
     }
 }

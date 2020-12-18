@@ -1,6 +1,6 @@
-﻿using Flurl.Http;
+using Flurl.Http;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Ports.Providers;
-using Hubee.NotificationApp.Infra.Models.Mjml;
+using Hubee.NotificationApp.Infra.Models.Email;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,8 +15,8 @@ namespace Hubee.NotificationApp.Infra.ModuleNotification.Adapters.Email.v1
         private readonly IConfiguration _configuration;
 
         public MjmlRenderProviderAdapter(
-            ILogger<MjmlRenderProviderAdapter> logger,
-            IConfiguration configuration
+                IConfiguration configuration,
+                ILogger<MjmlRenderProviderAdapter> logger
             )
         {
             _logger = logger;
@@ -27,17 +27,16 @@ namespace Hubee.NotificationApp.Infra.ModuleNotification.Adapters.Email.v1
         {
             try
             {
-                var MjmlConsumersApi = _configuration["MjmlConfig:ConsumersApi"];
-                var username = _configuration["MjmlConfig:ApplicationId"];
-                var password = _configuration["MjmlConfig:PublicKey"];
+                var config = new MjmlConfig();
+                _configuration.GetSection("MjmlConfig").Bind(config);
 
-                if (string.IsNullOrEmpty(MjmlConsumersApi))
-                    throw new Exception($"MjmlConfig:AdminApi is empty");
+                if (!config.GetValueInEnvironmentVariable().IsValid())
+                    throw new InvalidOperationException($"Appsettings with the section {nameof(MjmlConfig)} is empty");
 
-                var mjmlResponse = await MjmlConsumersApi
+                var mjmlResponse = await config.Endpoint
                     .AllowHttpStatus(HttpStatusCode.OK)
-                    .WithBasicAuth(username, password)
-                    .PostJsonAsync(new { }).ReceiveJson<MjmlResponse>();
+                    .WithBasicAuth(config.ApplicationId, config.PublicKey)
+                    .PostJsonAsync(new { mjml = template }).ReceiveJson<MjmlResponse>();
 
                 return mjmlResponse.html;
             }

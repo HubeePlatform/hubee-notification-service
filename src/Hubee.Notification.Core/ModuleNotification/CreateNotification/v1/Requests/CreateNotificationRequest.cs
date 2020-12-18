@@ -1,16 +1,15 @@
-﻿using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Events;
+using Hubee.Common.Events.Sdk.Events.Notification;
 using Hubee.Validation.Sdk.Core.Models;
-using System;
+using System.Collections.Generic;
 
-namespace Hubee.NotificationApp.Core.ModuleNotification.CrateNotification.v1.Requests
+namespace Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Requests
 {
-    public class CreateNotificationRequest: ValidatableSchema, ICreateNotificationEvent
+    public class CreateNotificationRequest : ValidatableSchema, ICreateNotificationEvent
     {
-        public Guid Id { get; set; }
         public int NotificationType { get; set; }
         public int TemplateType { get; set; }
         public int TemplateVersion { get; set; }
-        public string Receiver { get; set; }
+        public List<string> Receiver { get; set; }
         public TemplateMapper TemplateMapper { get; set; }
 
         public override object GetSchemaRules()
@@ -22,6 +21,27 @@ namespace Hubee.NotificationApp.Core.ModuleNotification.CrateNotification.v1.Req
                 TemplateVersion = "required|min:1",
                 Receiver = "required",
             };
+        }
+
+        public CreateNotificationRequest(int notificationType, int templateType, int templateVersion, List<string> receiver, TemplateMapper templateMapper)
+        {
+            NotificationType = notificationType;
+            TemplateType = templateType;
+            TemplateVersion = templateVersion;
+            Receiver = receiver;
+            TemplateMapper = templateMapper;
+        }
+
+        public static CreateNotificationRequest Make(ICreateNotificationEvent message)
+        {
+            return new CreateNotificationRequest
+                (
+                    message.NotificationType,
+                    message.TemplateType,
+                    message.TemplateVersion,
+                    message.Receiver,
+                    message.TemplateMapper
+                );
         }
     }
 }

@@ -17,10 +17,4 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Hubee.Notification.Core\Hubee.NotificationApp.Core.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Core\ModuleNotification\CreateNotification\v1\" />
-    <Folder Include="Core\ModuleNotification\Shared\v1\Entities\" />
-  </ItemGroup>
-
 </Project>

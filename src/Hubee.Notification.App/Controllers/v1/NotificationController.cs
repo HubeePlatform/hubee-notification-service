@@ -1,11 +1,12 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Hubee.Validation.Sdk.Core.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Hubee.NotificationApp.Core.ModuleNotification.CrateNotification.v1;
-using Hubee.NotificationApp.Core.ModuleNotification.CrateNotification.v1.Requests;
+using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Requests;
+using Hubee.MessageBroker.Sdk.Interfaces;
+using Hubee.Common.Events.Sdk.Events.Notification;
 
 namespace Hubee.NotificationApp.Api.Controllers.v1
 {
@@ -15,13 +16,16 @@ namespace Hubee.NotificationApp.Api.Controllers.v1
     [Route("api/v{version:apiVersion}/[controller]")]
     public class NotificationController : ControllerBase
     {
-        private readonly UseCase _useCase;
+        private readonly IEventBusService _eventBus;
         private readonly ILogger<NotificationController> _logger;
 
-        public NotificationController(UseCase useCase, ILogger<NotificationController> logger)
+        public NotificationController(
+            ILogger<NotificationController> logger,
+            IEventBusService eventBus
+            )
         {
-            _useCase = useCase;
             _logger = logger;
+            _eventBus = eventBus;
         }
 
         /// <summary>
@@ -41,12 +45,12 @@ namespace Hubee.NotificationApp.Api.Controllers.v1
                 if (request.ValidationResult.IsInvalid())
                 {
                     var errors = request.ValidationResult.GetErrors();
-                    _logger.LogWarning($"[NotificationController][Create]{Environment.NewLine}Invalid request{Environment.NewLine}{request}{Environment.NewLine}{errors}", request, errors);
+                    _logger.LogWarning("[NotificationController][CreateAsync]\nInvalid request\n{@request}\n{@errors}", request, errors);
                     return BadRequest(errors);
                 }
 
-                _logger.LogInformation($"[NotificationController][Create] Execute UseCase{Environment.NewLine}{@request}", request);
-                await _useCase.ExecuteAsync(request);
+                _logger.LogInformation("[NotificationController][CreateAsync] Execute UseCase\n{@request}", request);
+                await _eventBus.Publish<ICreateNotificationEvent>(request);
 
                 return Ok();
             }

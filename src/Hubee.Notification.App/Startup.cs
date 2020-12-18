@@ -1,7 +1,10 @@
 using System;
 using System.IO;
 using System.Reflection;
+using Hubee.Common.Events.Sdk.Events.Notification;
+using Hubee.MessageBroker.Sdk.Extensions;
 using Hubee.NotificationApp.Infra.ModuleNotification.Adapters.Database.Context;
+using Hubee.NotificationApp.Infra.ModuleNotification.EventHandlers;
 using Hubee.ServiceDiscovery.Sdk.Core.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -51,11 +54,10 @@ namespace Hubee.NotificationApp.Api
                 p.SubstituteApiVersionInUrl = true;
             });
 
-            services.AddDbContext<NotificationContext>(options =>
-                options.UseNpgsql(Environment.GetEnvironmentVariable("HUBEE_CONNECTION_STRING"))
-            );
+            services.AddDbContext<NotificationContext>();
 
             services.RegisterAll();
+            services.AddEventBus(Configuration, o => { o.AddConsumer<CreateNotificationEventHandler>(); });
             services.AddServiceDiscovery(Configuration);
         }
 
@@ -93,12 +95,18 @@ namespace Hubee.NotificationApp.Api
                 endpoints.MapHealthChecks("/healthcheck");
             });
 
+            app.UseEventBus(o =>
+            {
+                o.Subscribe<ICreateNotificationEvent, CreateNotificationEventHandler>();
+            });
+
             UpdateDatabase(app);
         }
 
         private void UpdateDatabase(IApplicationBuilder app)
         {
-            using (var serviceScope = app.ApplicationServices
+            using (
+                var serviceScope = app.ApplicationServices
                 .GetRequiredService<IServiceScopeFactory>()
                 .CreateScope())
             {

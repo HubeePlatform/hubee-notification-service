@@ -1,4 +1,4 @@
-﻿using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
+using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -34,7 +34,7 @@ namespace Hubee.NotificationApp.Infra.ModuleNotification.Adapters.Database.Entit
 
             builder
                 .Property(e => e.Content)
-                .HasColumnType("TEXT")
+                .HasColumnType("text")
                 .IsRequired();
 
             builder

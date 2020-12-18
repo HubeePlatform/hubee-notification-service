@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Models;
-using Hubee.NotificationApp.Core.ModuleNotification.CrateNotification.v1.Requests;
+using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Requests;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Ports.Providers;
 
 namespace Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Rules
@@ -30,7 +30,12 @@ namespace Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Ru
                 templateMapper.Title?.ForEach(x => title = title.Replace(x.Key, x.Value));
             }
 
-            return new DispatchData(request.Receiver, title, templateRendering);
+            return new DispatchData(
+                (NotificationType)request.NotificationType,
+                request.Receiver,
+                title,
+                templateRendering
+                );
         }
     }
 }

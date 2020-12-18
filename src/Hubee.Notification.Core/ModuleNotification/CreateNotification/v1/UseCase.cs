@@ -1,12 +1,12 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Hubee.NotificationApp.Core.Shared.v1.Exceptions;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Rules;
-using Hubee.NotificationApp.Core.ModuleNotification.CrateNotification.v1.Requests;
+using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Requests;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Ports.Notifications;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Ports.Providers;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Ports.Repositories;
 
-namespace Hubee.NotificationApp.Core.ModuleNotification.CrateNotification.v1
+namespace Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1
 {
     public class UseCase
     {
@@ -15,13 +15,13 @@ namespace Hubee.NotificationApp.Core.ModuleNotification.CrateNotification.v1
         private readonly RetrieveTemplateRule _retrieveTemplateRule;
 
         public UseCase(
-            INotificationPort _notificationPort,
-            ITemplateRenderProviderPort _templateRenderProviderPort,
-            ITemplateRepositoryPort _templateRepositoryPort)
+            IEmailNotificationPort emailNotificationPort,
+            ITemplateRenderProviderPort templateRenderProviderPort,
+            ITemplateRepositoryPort templateRepositoryPort)
         {
-            _dispatchNotificationRule = new DispatchNotificationRule(_notificationPort);
-            _retrieveTemplateRule = new RetrieveTemplateRule(_templateRepositoryPort);
-            _makeDispatchDataNotificationRule = new MakeDispatchDataNotificationRule(_templateRenderProviderPort);
+            _dispatchNotificationRule = new DispatchNotificationRule(emailNotificationPort);
+            _retrieveTemplateRule = new RetrieveTemplateRule(templateRepositoryPort);
+            _makeDispatchDataNotificationRule = new MakeDispatchDataNotificationRule(templateRenderProviderPort);
         }
 
         public async Task ExecuteAsync(CreateNotificationRequest request)
