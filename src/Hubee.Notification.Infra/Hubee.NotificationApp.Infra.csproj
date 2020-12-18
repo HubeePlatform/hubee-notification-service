@@ -33,5 +33,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Hubee.Notification.Core\Hubee.NotificationApp.Core.csproj" />
   </ItemGroup>
-
 </Project>

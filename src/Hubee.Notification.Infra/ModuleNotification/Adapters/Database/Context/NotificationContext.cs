@@ -1,4 +1,4 @@
-﻿using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
+using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
 using Hubee.NotificationApp.Infra.ModuleNotification.Adapters.Database.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;

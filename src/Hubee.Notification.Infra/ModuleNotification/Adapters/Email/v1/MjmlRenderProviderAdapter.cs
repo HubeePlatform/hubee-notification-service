@@ -1,4 +1,4 @@
-﻿using Flurl.Http;
+using Flurl.Http;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Ports.Providers;
 using Hubee.NotificationApp.Infra.Models.Email;
 using Microsoft.Extensions.Configuration;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Hubee.Validation.Sdk.Core.Extensions;
 using Microsoft.AspNetCore.Http;

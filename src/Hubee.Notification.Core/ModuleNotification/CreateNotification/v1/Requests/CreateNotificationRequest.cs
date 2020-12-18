@@ -1,4 +1,4 @@
-﻿using Hubee.Common.Events.Sdk.Events.Notification;
+using Hubee.Common.Events.Sdk.Events.Notification;
 using Hubee.Validation.Sdk.Core.Models;
 using System.Collections.Generic;
 

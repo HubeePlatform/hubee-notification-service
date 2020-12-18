@@ -1,4 +1,4 @@
-﻿using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
+using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
 using System.Collections.Generic;
 
 namespace Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Models

@@ -1,4 +1,4 @@
-﻿using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Models;
+using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Models;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Ports.Notifications;
 using Hubee.NotificationApp.Core.ModuleNotification.Shared.v1.Entities;
 using Hubee.NotificationApp.Core.Shared.v1.Exceptions;
@@ -17,6 +17,7 @@ namespace Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Ru
 
         public async Task DispatchAsync(DispatchData dispatchData)
         {
+
             switch (dispatchData.NotificationType)
             {
                 case NotificationType.Email:

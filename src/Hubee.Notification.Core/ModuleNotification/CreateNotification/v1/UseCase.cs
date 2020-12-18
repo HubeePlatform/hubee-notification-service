@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Hubee.NotificationApp.Core.Shared.v1.Exceptions;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Rules;
 using Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Requests;
