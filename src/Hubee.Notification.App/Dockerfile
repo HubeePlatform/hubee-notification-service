@@ -9,6 +9,11 @@ WORKDIR /src
 COPY ["src/Hubee.Notification.App/Hubee.NotificationApp.Api.csproj", "src/Hubee.Notification.App/"]
 COPY ["src/Hubee.Notification.Infra/Hubee.NotificationApp.Infra.csproj", "src/Hubee.Notification.Infra/"]
 COPY ["src/Hubee.Notification.Core/Hubee.NotificationApp.Core.csproj", "src/Hubee.Notification.Core/"]
+
+ARG NUGET_PGK_USER=YOUR_USER
+ARG NUGET_PGK_TOKEN=YOUR_TOKEN
+RUN dotnet nuget add source https://nuget.pkg.github.com/HubeePlatform/index.json -n github -u ${NUGET_PGK_USER} -p ${NUGET_PGK_TOKEN}  --store-password-in-clear-text
+
 RUN dotnet restore "src/Hubee.Notification.App/Hubee.NotificationApp.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Hubee.Notification.App"
