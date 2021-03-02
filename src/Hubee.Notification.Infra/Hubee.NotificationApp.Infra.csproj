@@ -19,7 +19,7 @@
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Flurl.Http" Version="3.0.0" />
-    <PackageReference Include="Hubee.Common.Events.Sdk" Version="0.0.3" />
+    <PackageReference Include="Hubee.Common.Events.Sdk" Version="0.0.17" />
     <PackageReference Include="Hubee.MessageBroker.Sdk" Version="0.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.1">

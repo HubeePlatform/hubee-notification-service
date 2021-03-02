@@ -23,9 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hubee.Logging.Sdk" Version="0.0.2" />
+    <PackageReference Include="Hubee.Logging.Sdk" Version="0.0.3" />
     <PackageReference Include="Hubee.ServiceDiscovery.Sdk" Version="0.0.2" />
-    <PackageReference Include="Hubee.Validation.Sdk" Version="0.0.2.5" />
+    <PackageReference Include="Hubee.Validation.Sdk" Version="0.0.2.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.2.0" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="3.1.9" />

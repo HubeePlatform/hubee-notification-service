@@ -50,7 +50,7 @@ namespace Hubee.NotificationApp.Api.Controllers.v1
                 }
 
                 _logger.LogInformation("[NotificationController][CreateAsync] Execute UseCase\n{@request}", request);
-                await _eventBus.Publish<ICreateNotificationEvent>(request);
+                await _eventBus.Publish<CreateNotificationEvent>(request);
 
                 return Ok();
             }

@@ -9,7 +9,7 @@ using CreateNotificationUseCase = Hubee.NotificationApp.Core.ModuleNotification.
 
 namespace Hubee.NotificationApp.Infra.ModuleNotification.EventHandlers
 {
-    public class CreateNotificationEventHandler : GenericMessageHandle<ICreateNotificationEvent>
+    public class CreateNotificationEventHandler : GenericMessageHandle<CreateNotificationEvent>
     {
         private readonly ILogger<CreateNotificationEventHandler> _logger;
         private readonly CreateNotificationUseCase _createNotificationUseCase;
@@ -23,7 +23,7 @@ namespace Hubee.NotificationApp.Infra.ModuleNotification.EventHandlers
             _createNotificationUseCase = createNotificationUseCase;
         }
 
-        public override async Task Handle(ICreateNotificationEvent message, EventHeader header)
+        public override async Task Handle(CreateNotificationEvent message, EventHeader header)
         {
             try
             {

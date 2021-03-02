@@ -97,7 +97,7 @@ namespace Hubee.NotificationApp.Api
 
             app.UseEventBus(o =>
             {
-                o.Subscribe<ICreateNotificationEvent, CreateNotificationEventHandler>();
+                o.Subscribe<CreateNotificationEvent, CreateNotificationEventHandler>();
             });
 
             UpdateDatabase(app);
