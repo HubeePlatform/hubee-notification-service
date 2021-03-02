@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Requests
 {
-    public class CreateNotificationRequest : ValidatableSchema, ICreateNotificationEvent
+    public class CreateNotificationRequest : ValidatableSchema, CreateNotificationEvent
     {
         public int NotificationType { get; set; }
         public int TemplateType { get; set; }
@@ -32,7 +32,7 @@ namespace Hubee.NotificationApp.Core.ModuleNotification.CreateNotification.v1.Re
             TemplateMapper = templateMapper;
         }
 
-        public static CreateNotificationRequest Make(ICreateNotificationEvent message)
+        public static CreateNotificationRequest Make(CreateNotificationEvent message)
         {
             return new CreateNotificationRequest
                 (

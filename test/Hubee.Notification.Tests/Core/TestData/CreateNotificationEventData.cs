@@ -5,7 +5,7 @@ namespace Hubee.NotificationApp.Tests.Core.TestData
 {
     public static class CreateNotificationEventData
     {
-        public static ICreateNotificationEvent GetValidEvent()
+        public static CreateNotificationEvent GetValidEvent()
         {
             return new Event()
             {
@@ -18,7 +18,7 @@ namespace Hubee.NotificationApp.Tests.Core.TestData
         }
     }
 
-    public class Event : ICreateNotificationEvent
+    public class Event : CreateNotificationEvent
     {
         public int NotificationType { get; set; }
 
